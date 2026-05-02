@@ -1,0 +1,61 @@
+:root { --main-bg: #f39c12; --dark-accent: #d35400; }
+
+body {
+    background: #121212;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    font-family: 'Arial Black', sans-serif;
+    color: white;
+}
+
+#game-container {
+    width: 400px;
+    height: 700px;
+    background: var(--main-bg);
+    border: 8px solid var(--dark-accent);
+    border-radius: 40px;
+    position: relative;
+    overflow: hidden;
+}
+
+.screen { height: 100%; display: flex; flex-direction: column; padding: 25px; box-sizing: border-box; }
+.hidden { display: none !important; }
+
+h1 { text-align: center; font-size: 3.5rem; line-height: 1; text-shadow: 4px 4px var(--dark-accent); margin-top: 50px; }
+
+.menu-btn {
+    background: white; color: var(--dark-accent); border: none; padding: 20px;
+    margin: 10px 0; border-radius: 15px; font-weight: bold; cursor: pointer; font-size: 1.2rem;
+}
+
+/* Pizza Layout */
+.kitchen { flex-grow: 1; display: flex; justify-content: center; align-items: center; }
+#pizza-disc {
+    width: 260px; height: 260px; background: #f1c40f; border: 15px solid #e67e22;
+    border-radius: 50%; position: relative; box-shadow: 0 10px 0 var(--dark-accent);
+}
+
+.topping-img { position: absolute; font-size: 30px; transform: translate(-50%, -50%); }
+
+/* Order Display */
+.order-zone { margin-bottom: 10px; }
+#order-card { background: rgba(0,0,0,0.2); padding: 15px; border-radius: 15px; text-align: center; }
+#order-display { font-size: 1.1rem; color: #fff; margin-top: 5px; letter-spacing: 1px; }
+
+/* Ingredients */
+.ingredient-shelf { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 15px; }
+.ingredient-shelf button { 
+    font-size: 28px; background: white; border: none; padding: 10px; border-radius: 12px; cursor: pointer;
+    box-shadow: 0 4px #bdc3c7;
+}
+.locked { filter: grayscale(1); opacity: 0.4; }
+
+.serve-btn { background: #2ecc71; border: none; color: white; padding: 15px; border-radius: 15px; font-size: 1.3rem; width: 100%; cursor: pointer; }
+.boost-btn { background: #9b59b6 !important; color: white !important; }
+
+#feedback-text { font-size: 1.2rem; height: 24px; text-align: center; }
+#boost-timer { color: #f1c40f; animation: pulse 1s infinite; }
+@keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.5; } 100% { opacity: 1; } }
