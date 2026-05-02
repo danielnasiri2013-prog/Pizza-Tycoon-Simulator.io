@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pizza Tycoon Pro</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="game-container">
+        <div id="home-screen" class="screen">
+            <h1>PIZZA<br>TYCOON</h1>
+            <div class="main-menu">
+                <button class="menu-btn play" onclick="startGame()">PLAY</button>
+                <button class="menu-btn" onclick="showScreen('settings-screen')">SETTINGS</button>
+            </div>
+        </div>
+
+        <div id="settings-screen" class="screen hidden">
+            <h2>SETTINGS</h2>
+            <div class="setting-item">
+                <label>Brightness</label>
+                <input type="range" min="30" max="150" value="100" oninput="changeBrightness(this.value)">
+            </div>
+            <div class="setting-item">
+                <label>UI Theme</label>
+                <select onchange="changeTheme(this.value)">
+                    <option value="#f39c12">Classic Orange</option>
+                    <option value="#2ecc71">Fresh Green</option>
+                    <option value="#3498db">Cool Blue</option>
+                </select>
+            </div>
+            <button class="menu-btn" onclick="showScreen('home-screen')">BACK</button>
+        </div>
+
+        <div id="shop-screen" class="screen hidden">
+            <h2>UPGRADES</h2>
+            <p>Wallet: $<span id="shop-money">0</span></p>
+            <div class="shop-grid">
+                <button id="buy-Onions" onclick="buyIngredient('Onions', 50)">🧅 Onions ($50)</button>
+                <button id="buy-Peppers" onclick="buyIngredient('Peppers', 75)">🫑 Peppers ($75)</button>
+                <button id="buy-Mushrooms" onclick="buyIngredient('Mushrooms', 100)">🍄 Mushrooms ($100)</button>
+                <button id="buy-OliveOil" onclick="buyIngredient('OliveOil', 150)">🏺 Olive Oil ($150)</button>
+                <hr style="grid-column: span 2; width: 100%;">
+                <button id="buy-Boost" class="boost-btn" onclick="buyBoost(200)">⚡ 1.5x CASH (1 min) ($200)</button>
+            </div>
+            <button class="menu-btn" onclick="showScreen('game-screen')">BACK TO COOKING</button>
+        </div>
+
+        <div id="game-screen" class="screen hidden">
+            <div class="hud">
+                <div class="stats">
+                    <div class="stat-box">Cash: $<span id="money">0</span></div>
+                    <div id="boost-timer" class="hidden">⚡ 1.5x: <span id="timer-secs">60</span>s</div>
+                </div>
+                <div id="feedback-text"></div>
+            </div>
+
+            <div class="order-zone">
+                <div id="order-card">
+                    <span class="label">CURRENT ORDER:</span>
+                    <div id="order-display"></div>
+                </div>
+            </div>
+
+            <div class="kitchen">
+                <div id="pizza-disc">
+                    <div id="topping-layer"></div>
+                </div>
+            </div>
+
+            <div class="controls">
+                <div class="ingredient-shelf">
+                    <button onclick="addTopping('Sauce')">🍅</button>
+                    <button onclick="addTopping('Cheese')">🧀</button>
+                    <button onclick="addTopping('Pepperoni')">🥩</button>
+                    <button id="btn-Onions" class="locked" onclick="addTopping('Onions')" disabled>🧅</button>
+                    <button id="btn-Peppers" class="locked" onclick="addTopping('Peppers')" disabled>🫑</button>
+                    <button id="btn-Mushrooms" class="locked" onclick="addTopping('Mushrooms')" disabled>🍄</button>
+                    <button id="btn-OliveOil" class="locked" onclick="addTopping('OliveOil')" disabled>🏺</button>
+                </div>
+                <div class="game-actions">
+                    <button class="serve-btn" onclick="servePizza()">SERVE PIZZA</button>
+                    <button class="shop-nav" onclick="showScreen('shop-screen')">SHOP</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
